@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Sidebar from './components/Sidebar';
 import SkillDetail from './components/SkillDetail';
+import Landing from './components/Landing';
 import SearchBar from './components/SearchBar';
 import './styles/design-system.css';
 import './styles/global.css';
@@ -107,7 +108,10 @@ export default function App() {
               onSelect={setSelectedSkill}
               query={query}
             />
-            <SkillDetail skill={selectedSkill} />
+            {selectedSkill
+              ? <SkillDetail skill={selectedSkill} />
+              : <Landing categories={categories} onSelect={setSelectedSkill} />
+            }
           </>
         )}
       </div>

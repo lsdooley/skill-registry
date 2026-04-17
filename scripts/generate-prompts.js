@@ -169,7 +169,7 @@ for (const catDir of categoryDirs) {
     if (cat) {
       cat.skills.push({
         slug,
-        title:       titleCase(slug),
+        title:        titleCase(slug),
         description,
         risk,
         eaFit,
@@ -177,7 +177,9 @@ for (const catDir of categoryDirs) {
         featured,
         version,
         promptPath,
-        source: meta.source || '',
+        source:       meta.source || '',
+        dependencies: fm.dependencies || 'None',
+        dateAdded:    fm.date_added ? String(fm.date_added) : '',
       });
     }
   }
