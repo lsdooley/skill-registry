@@ -1,0 +1,19 @@
+.teams-callout {
+  display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap;
+  padding: var(--space-4) var(--space-6);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, var(--color-border));
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-8);
+}
+.teams-callout h3 { font-size: var(--text-base); font-weight: 700; color: var(--color-text); white-space: nowrap; }
+.teams-callout__features { display: flex; gap: var(--space-4); flex: 1; flex-wrap: wrap; }
+.teams-callout__features span {
+  display: flex; align-items: center; gap: 5px;
+  font-size: var(--text-sm); color: var(--color-text-muted);
+}
+.teams-callout__cta {
+  font-size: var(--text-sm); font-weight: 600;
+  color: var(--color-primary); text-decoration: none; white-space: nowrap;
+}
+.teams-callout__cta:hover { text-decoration: underline; }

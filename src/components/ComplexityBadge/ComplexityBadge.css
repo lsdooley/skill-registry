@@ -1,0 +1,9 @@
+.complexity-badge {
+  display: inline-flex; align-items: center;
+  font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.04em;
+  padding: 2px 8px; border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+.complexity-badge--easy { background: var(--color-success-bg); color: var(--color-success); }
+.complexity-badge--moderate { background: var(--color-gold-bg); color: var(--color-gold); }
+.complexity-badge--complex { background: var(--color-notification-bg); color: var(--color-notification); }

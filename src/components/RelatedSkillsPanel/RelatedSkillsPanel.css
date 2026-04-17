@@ -1,0 +1,13 @@
+.related-panel { margin-top: var(--space-12); }
+.related-panel__header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+.related-panel__header h2 { font-size: var(--text-lg); font-weight: 700; }
+.related-panel__header a { font-size: var(--text-sm); color: var(--color-primary); text-decoration: none; }
+.related-panel__header a:hover { text-decoration: underline; }
+.related-panel__scroll {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: var(--space-4);
+}

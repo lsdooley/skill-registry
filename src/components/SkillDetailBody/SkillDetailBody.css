@@ -1,0 +1,121 @@
+/* ── SkillDetailBody ─────────────────────────────────────────────────────── */
+
+/* Tab bar row — wraps TabBar + optional full-page link */
+.sdb__bar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Override TabBar's own border-bottom when nested here */
+.sdb__bar .tab-bar {
+  border-bottom: none;
+  flex: 1;
+}
+
+.sdb__ext {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 10px var(--space-4);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.sdb__ext:hover { color: var(--color-primary); text-decoration: none; }
+
+/* ── Content wrapper ─────────────────────────────────────────────────────── */
+.sdb__content {
+  padding: var(--space-6) var(--space-9) var(--space-16);
+  background: var(--color-bg);
+}
+
+/* ── No-content notice ───────────────────────────────────────────────────── */
+.sdb__no-content {
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.sdb__no-content p { margin-bottom: var(--space-2); font-size: var(--text-sm); }
+.sdb__no-content code {
+  display: inline-block;
+  margin-top: var(--space-2);
+  background: var(--color-bg-secondary);
+  color: var(--color-primary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  font-family: 'SF Mono', 'Fira Mono', monospace;
+  font-size: var(--text-xs);
+}
+
+/* ── Details table ───────────────────────────────────────────────────────── */
+.sdb__detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.sdb__detail-table tr { border-bottom: 1px solid var(--color-border); }
+.sdb__detail-key {
+  width: 180px;
+  padding: var(--space-3);
+  font-weight: 600;
+  font-family: 'SF Mono', 'Fira Mono', monospace;
+  color: var(--color-text-muted);
+  vertical-align: top;
+  background: var(--color-bg-secondary);
+}
+.sdb__detail-val {
+  padding: var(--space-3);
+  color: var(--color-text);
+}
+
+/* ── Releases table ──────────────────────────────────────────────────────── */
+.sdb__release-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.sdb__release-table th,
+.sdb__release-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.sdb__release-table th {
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-align: left;
+  background: var(--color-bg-secondary);
+}
+
+/* ── Learnings ───────────────────────────────────────────────────────────── */
+.sdb__learnings { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.sdb__empty {
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: var(--text-sm);
+}
+
+.sdb__learning-item {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+.sdb__learning-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+.sdb__learning-author { font-size: var(--text-sm); font-weight: 600; color: var(--color-text); }
+.sdb__learning-date   { font-size: var(--text-xs); color: var(--color-text-muted); }
+.sdb__learning-item p { font-size: var(--text-sm); color: var(--color-text-muted); }

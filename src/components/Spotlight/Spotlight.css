@@ -1,0 +1,16 @@
+.hero-spotlight {
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  width: 138%;
+  height: 169%;
+  opacity: 0;
+  animation: spotlight-fade 0.8s ease-out 0.3s forwards;
+  top: -40%;
+  left: -20%;
+}
+
+@keyframes spotlight-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
