@@ -4,6 +4,7 @@ set -e
 
 BUCKET="skill-registry-512492730598"
 REGION="us-east-1"
+CF_DISTRIBUTION_ID="${CF_DISTRIBUTION_ID:-E1M1C3NSVDON3J}"
 
 # ── 1. Build ──────────────────────────────────────────────────────
 echo "Building..."
