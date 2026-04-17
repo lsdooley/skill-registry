@@ -1,6 +1,8 @@
 # Generated (created by npm run generate / prebuild)
 public/prompts/
 public/skills-manifest.json
+src/data/skills.js
+src/data/authors.js
 
 # Dependencies
 node_modules/
