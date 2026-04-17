@@ -54,6 +54,36 @@ function parseReadmeTable(readmeText) {
   return rows;
 }
 
+// Extract bullet lists from "## Use this skill when" / "## Do not use this skill when"
+function extractUseSections(body) {
+  function bullets(sectionTitle) {
+    // Match the section heading and capture everything until the next ## or end
+    const re = new RegExp(
+      '##\\s+' + sectionTitle + '\\s*\\n([\\s\\S]*?)(?=\\n##\\s|\\n---\\s*\\n|$)',
+      'i'
+    );
+    const m = body.match(re);
+    if (!m) return [];
+    return m[1]
+      .split('\n')
+      .map(l => l.replace(/^[-*]\s+/, '').trim())
+      .filter(l => l.length > 0);
+  }
+  return {
+    useWhen:     bullets('Use this skill when'),
+    dontUseWhen: bullets('Do not use this skill when'),
+  };
+}
+
+// Strip those sections from the body so they don't appear in the prompt file
+function stripUseSections(body) {
+  return body
+    .replace(/##\s+Use this skill when\s*\n[\s\S]*?(?=\n##\s|$)/i, '')
+    .replace(/##\s+Do not use this skill when\s*\n[\s\S]*?(?=\n##\s|$)/i, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 // Smart-transform SKILL.md body into a Copilot Lite–friendly prompt
 function smartTransform(body, slug, description) {
   const title = titleCase(slug);
@@ -154,12 +184,16 @@ for (const catDir of categoryDirs) {
     const featured    = meta.featured   || false;
     const promptPath  = `/prompts/${catDir}/${slug}.md`;
 
-    // Write converted prompt
+    // Extract use-when sections before generating the prompt
+    const { useWhen, dontUseWhen } = extractUseSections(body);
+    const cleanedBody = stripUseSections(body);
+
+    // Write converted prompt (use/don't-use sections stripped; shown in UI header instead)
     const promptDir = join(PROMPTS_DIR, catDir);
     mkdirSync(promptDir, { recursive: true });
     writeFileSync(
       join(promptDir, `${slug}.md`),
-      smartTransform(body, slug, description),
+      smartTransform(cleanedBody, slug, description),
       'utf8'
     );
     written++;
@@ -180,6 +214,8 @@ for (const catDir of categoryDirs) {
         source:       meta.source || '',
         dependencies: fm.dependencies || 'None',
         dateAdded:    fm.date_added ? String(fm.date_added) : '',
+        useWhen,
+        dontUseWhen,
       });
     }
   }
